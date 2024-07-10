@@ -11,14 +11,14 @@ import fileUpload from "express-fileupload";
 
 const app = express();
 config({ path: "./config/config.env" });
+app.use(cors({
+  origin: 'https://job-seeking-application-frontend-vdmg.onrender.com', // Replace with your frontend's URL
+  methods: ['GET', 'POST', 'DELETE', 'PUT'],
+  credentials: true,
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
-app.use(
-  cors({
-    origin: "https://job-seeking-application-frontend-vdmg.onrender.com",
-    method: ["GET", "POST", "DELETE", "PUT"],
-    credentials: true,
-  })
-);
+
 
 app.use(cookieParser());
 app.use(express.json());
